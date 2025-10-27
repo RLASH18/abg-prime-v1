@@ -8,6 +8,7 @@ class m_0002_create_inventory_table
     {
         $SQL = "CREATE TABLE inventory (
                     id INT AUTO_INCREMENT PRIMARY KEY,
+                    supplier_id INT DEFAULT NULL,
                     item_code VARCHAR(20) UNIQUE NOT NULL,
                     brand_name VARCHAR(100),
                     item_name VARCHAR(100) NOT NULL,
@@ -29,7 +30,8 @@ class m_0002_create_inventory_table
                     quantity INT NOT NULL,
                     restock_threshold INT DEFAULT 10,
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                    CONSTRAINT fk_inventory_supplier FOREIGN KEY (supplier_id) REFERENCES suppliers(id) ON DELETE SET NULL
                 ) ENGINE=INNODB;";
 
         $db = Application::$app->db;

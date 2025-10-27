@@ -127,6 +127,29 @@
                 </div>
             </div>
 
+            <!-- Supplier -->
+            <div class="form-group">
+                <label class="block mb-2 text-sm font-medium text-gray-700">Supplier</label>
+                <div class="w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50">
+                    <?php if (isset($supplier) && $supplier): ?>
+                        <a href="/admin/supplier/<?= $supplier->id ?>" class="text-[#815331] hover:underline font-semibold">
+                            <?= htmlspecialchars($supplier->supplier_name) ?>
+                        </a>
+                        <?php if ($supplier->status === 'active'): ?>
+                            <span class="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-emerald-100 text-emerald-800">
+                                Active
+                            </span>
+                        <?php else: ?>
+                            <span class="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800">
+                                Inactive
+                            </span>
+                        <?php endif; ?>
+                    <?php else: ?>
+                        <span class="text-gray-400">No supplier assigned</span>
+                    <?php endif; ?>
+                </div>
+            </div>
+
             <!-- Timestamps -->
             <div class="grid grid-cols-1 gap-4">
                 <div class="form-group">

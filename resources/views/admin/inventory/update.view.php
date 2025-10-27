@@ -27,6 +27,26 @@
         <div class="space-y-6">
             <h3 class="pb-2 text-lg font-semibold text-gray-900 border-b border-gray-200">Basic Information</h3>
 
+            <!-- Supplier -->
+            <div class="form-group">
+                <label for="supplier_id" class="block mb-2 text-sm font-medium text-gray-700">
+                    Supplier
+                </label>
+                <select name="supplier_id" id="supplier_id"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#815331] focus:border-[#815331] transition-colors bg-white <?= isInvalid('supplier_id') ? 'border-red-300 bg-red-50' : '' ?>">
+                    <option value="">-- Select a supplier (Optional) --</option>
+                    <?php foreach ($suppliers as $supplier): ?>
+                        <option value="<?= $supplier->id ?>" <?= $inventory->supplier_id == $supplier->id ? 'selected' : '' ?>>
+                            <?= htmlspecialchars($supplier->supplier_name) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+                <p class="mt-1 text-xs text-gray-500">Select a supplier or leave blank if not applicable</p>
+                <div class="mt-2 text-xs text-left text-red-500">
+                    <p><?= error('supplier_id') ?></p>
+                </div>
+            </div>
+
             <!-- Brand Name -->
             <div class="form-group">
                 <label for="brand_name" class="block mb-2 text-sm font-medium text-gray-700">

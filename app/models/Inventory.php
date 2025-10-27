@@ -3,6 +3,7 @@
 namespace app\models;
 
 use app\core\Model;
+use app\models\Supplier;
 
 class Inventory extends Model
 {
@@ -19,6 +20,7 @@ class Inventory extends Model
     public static function fillable(): array
     {
         return [
+            'supplier_id',
             'item_code',
             'brand_name',
             'item_name',
@@ -33,6 +35,18 @@ class Inventory extends Model
             'created_at',
             'updated_at'
         ];
+    }
+
+    /**
+     * Get the supplier for this inventory item
+     */
+    public function supplier()
+    {
+        if (!$this->supplier_id) {
+            return null;
+        }
+        
+        return Supplier::find($this->supplier_id);
     }
 
     /**

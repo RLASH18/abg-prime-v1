@@ -59,15 +59,29 @@
                     </span>
                     <a href="/admin/dashboard">Dashboard</a>
                 </li>
-                <li class="group sidebar-item" data-route="/admin/inventory">
-                    <span class="sidebar-icon">
-                        <svg class="w-7 h-7 text-gray-800 dark:text-white group-hover:text-white" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M6 6h8m-8 4h12M6 14h8m-8 4h12" />
+                <!-- Inventory Dropdown -->
+                <li class="group sidebar-item sidebar-dropdown" data-route="/admin/inventory">
+                    <div class="sidebar-dropdown-header" onclick="toggleDropdown(this)">
+                        <span class="sidebar-icon">
+                            <svg class="w-7 h-7 text-gray-800 dark:text-white group-hover:text-white" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 6h8m-8 4h12M6 14h8m-8 4h12" />
+                            </svg>
+                        </span>
+                        <span>Inventory</span>
+                        <svg class="dropdown-arrow w-4 h-4 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                         </svg>
-                    </span>
-                    <a href="/admin/inventory">Inventory</a>
+                    </div>
+                    <ul class="dropdown-menu">
+                        <li class="sidebar-subitem" data-route="/admin/inventory">
+                            <a href="/admin/inventory">Items</a>
+                        </li>
+                        <li class="sidebar-subitem" data-route="/admin/supplier">
+                            <a href="/admin/supplier">Suppliers</a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="group sidebar-item" data-route="/admin/orders">
                     <span class="sidebar-icon">

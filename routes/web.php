@@ -6,6 +6,7 @@ use app\controllers\admin\BillingController;
 use app\controllers\admin\DeliveryController;
 use app\controllers\admin\InventoryController;
 use app\controllers\admin\OrdersController;
+use app\controllers\admin\SupplierController;
 use app\controllers\customer\CartController;
 use app\controllers\customer\CheckoutController;
 use app\controllers\customer\CustomerController;
@@ -49,6 +50,17 @@ Route::group(['middleware' => 'admin', 'prefix' => '/admin'], function () {
         Route::post('/inventory/update/{id}', 'update');
         Route::get('/inventory/delete/{id}', 'delete');
         Route::post('/inventory/destroy/{id}', 'destroy');
+    });
+
+    Route::controller(SupplierController::class, function () {
+        Route::get('/supplier', 'index');
+        Route::get('/supplier/create', 'create');
+        Route::post('/supplier/store', 'store');
+        Route::get('/supplier/{id}', 'show');
+        Route::get('/supplier/{id}/edit', 'edit');
+        Route::post('/supplier/{id}/update', 'update');
+        Route::get('/supplier/{id}/delete', 'delete');
+        Route::post('/supplier/{id}/destroy', 'destroy');
     });
 
     Route::controller(OrdersController::class, function () {

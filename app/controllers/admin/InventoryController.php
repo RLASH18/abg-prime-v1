@@ -6,6 +6,7 @@ use app\core\Controller;
 use app\core\FileHandler;
 use app\core\Request;
 use app\models\Inventory;
+use app\models\Supplier;
 
 class InventoryController extends Controller
 {
@@ -29,8 +30,11 @@ class InventoryController extends Controller
      */
     public function create()
     {
+        $suppliers = Supplier::getActive();
+        
         return $this->view('admin/inventory/create', [
-            'title' => 'Add Item'
+            'title' => 'Add Item',
+            'suppliers' => $suppliers
         ]);
     }
 
@@ -81,10 +85,17 @@ class InventoryController extends Controller
     public function show($id)
     {
         $inventory = $this->findInventoryOrFail($id);
+        
+        // Fetch supplier if exists
+        $supplier = null;
+        if ($inventory->supplier_id) {
+            $supplier = Supplier::find($inventory->supplier_id);
+        }
 
         $data = [
             'title' => 'Inventory Item',
-            'inventory' => $inventory
+            'inventory' => $inventory,
+            'supplier' => $supplier
         ];
 
         return $this->view('admin/inventory/show', $data);
@@ -96,10 +107,12 @@ class InventoryController extends Controller
     public function edit($id)
     {
         $inventory = $this->findInventoryOrFail($id);
+        $suppliers = Supplier::getActive();
 
         $data = [
             'title' => 'Edit Inventory',
-            'inventory' => $inventory
+            'inventory' => $inventory,
+            'suppliers' => $suppliers
         ];
 
         return $this->view('admin/inventory/update', $data);
