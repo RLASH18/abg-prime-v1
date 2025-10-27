@@ -65,7 +65,7 @@ $totalAlerts = count($lowStockItems) + count($outOfStockItems);
     
     <!-- Modal Content -->
     <div class="flex items-center justify-center min-h-screen px-4 py-6">
-        <div class="relative w-full max-w-4xl bg-white rounded-lg shadow-xl">
+        <div class="relative w-full bg-white rounded-lg shadow-xl" style="max-width: 700px;">
             <!-- Modal Header -->
             <div class="flex items-center justify-between p-4 border-b sm:p-6">
                 <h2 class="text-xl font-bold text-gray-900 sm:text-2xl">Stock Alert - Items Needing Restock</h2>
@@ -89,19 +89,21 @@ $totalAlerts = count($lowStockItems) + count($outOfStockItems);
                 </h3>
                 <div class="space-y-2">
                     <?php foreach ($outOfStockItems as $item): ?>
-                    <div class="bg-red-50 border border-red-200 rounded-lg p-4 flex items-center justify-between">
-                        <div class="flex-1">
-                            <div class="font-semibold text-gray-900"><?= $item->item_name ?></div>
+                    <div class="bg-red-50 border border-red-200 rounded-lg p-4 flex items-center gap-3">
+                        <div class="flex-1 min-w-0">
+                            <div class="font-semibold text-gray-900 truncate" title="<?= htmlspecialchars($item->item_name) ?>">
+                                <?= strlen($item->item_name) > 40 ? substr($item->item_name, 0, 40) . '...' : $item->item_name ?>
+                            </div>
                             <div class="text-sm text-gray-600 mt-1">
                                 <span class="font-medium">Code:</span> <?= $item->item_code ?> | 
                                 <span class="font-medium">Category:</span> <?= $item->category ?>
                             </div>
                         </div>
-                        <div class="text-right">
+                        <div class="text-center flex-shrink-0" style="min-width: 70px;">
                             <div class="text-2xl font-bold text-red-600">0</div>
                             <div class="text-xs text-gray-500">Threshold: <?= $item->restock_threshold ?></div>
                         </div>
-                        <a href="/admin/inventory/edit/<?= $item->id ?>" class="ml-4 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                        <a href="/admin/inventory/edit/<?= $item->id ?>" class="flex-shrink-0 bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors whitespace-nowrap">
                             Restock Now
                         </a>
                     </div>
@@ -121,19 +123,21 @@ $totalAlerts = count($lowStockItems) + count($outOfStockItems);
                 </h3>
                 <div class="space-y-2">
                     <?php foreach ($lowStockItems as $item): ?>
-                    <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 flex items-center justify-between">
-                        <div class="flex-1">
-                            <div class="font-semibold text-gray-900"><?= $item->item_name ?></div>
+                    <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 flex items-center gap-3">
+                        <div class="flex-1 min-w-0">
+                            <div class="font-semibold text-gray-900 truncate" title="<?= htmlspecialchars($item->item_name) ?>">
+                                <?= strlen($item->item_name) > 40 ? substr($item->item_name, 0, 40) . '...' : $item->item_name ?>
+                            </div>
                             <div class="text-sm text-gray-600 mt-1">
                                 <span class="font-medium">Code:</span> <?= $item->item_code ?> | 
                                 <span class="font-medium">Category:</span> <?= $item->category ?>
                             </div>
                         </div>
-                        <div class="text-right">
+                        <div class="text-center flex-shrink-0" style="min-width: 70px;">
                             <div class="text-2xl font-bold text-amber-600"><?= $item->quantity ?></div>
                             <div class="text-xs text-gray-500">Threshold: <?= $item->restock_threshold ?></div>
                         </div>
-                        <a href="/admin/inventory/edit/<?= $item->id ?>" class="ml-4 bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                        <a href="/admin/inventory/edit/<?= $item->id ?>" class="flex-shrink-0 bg-amber-600 hover:bg-amber-700 text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors whitespace-nowrap">
                             Restock
                         </a>
                     </div>
