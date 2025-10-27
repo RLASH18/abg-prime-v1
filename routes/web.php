@@ -6,6 +6,7 @@ use app\controllers\admin\BillingController;
 use app\controllers\admin\DeliveryController;
 use app\controllers\admin\InventoryController;
 use app\controllers\admin\OrdersController;
+use app\controllers\admin\ReportsController;
 use app\controllers\admin\SupplierController;
 use app\controllers\customer\CartController;
 use app\controllers\customer\CheckoutController;
@@ -85,6 +86,10 @@ Route::group(['middleware' => 'admin', 'prefix' => '/admin'], function () {
         Route::get('/delivery/delete/{id}', 'delete');
         Route::post('/delivery/destroy/{id}', 'destroy');
         Route::get('/delivery/calendar-data', 'getCalendarData');
+    });
+
+    Route::controller(ReportsController::class, function () {
+        Route::get('/reports', 'index');
     });
 });
 

@@ -973,6 +973,47 @@ footer {
 
 /* Admin Dashboard end */
 
+/* Reports Page */
+.report-tab {
+  border-color: transparent;
+  color: #6b7280;
+  transition: all 0.2s;
+}
+
+.report-tab:hover {
+  color: #815331;
+}
+
+.report-tab.active {
+  border-color: #815331;
+  color: #815331;
+}
+
+.tab-content {
+  animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.truncate-text {
+  cursor: help;
+  display: inline-block;
+}
+
+.truncate-text:hover {
+  color: #815331;
+}
+/* Reports Page end */
+
 /* Orders Dashboard Start */
 
 .orders-icon-box svg {

@@ -227,6 +227,7 @@ function breadcrumbs(): array
         'orders'    => 'Customer Orders',
         'billings'  => 'Billings',
         'delivery'  => 'Delivery',
+        'reports'   => 'Reports & Validation',
         'settings'  => 'Settings',
     ];
 
