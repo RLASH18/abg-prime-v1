@@ -48,7 +48,7 @@
                 <p class="text-sm text-gray-600">Call us directly</p>
             </div>
         </div>
-        <p class="text-gray-700">+63 912 345 6789</p>
+        <p class="text-gray-700">+63 939 917 4419</p>
         <p class="text-xs text-gray-500 mt-2">Mon-Sat: 8AM-6PM</p>
     </div>
 
@@ -66,7 +66,7 @@
                 <p class="text-sm text-gray-600">Our store location</p>
             </div>
         </div>
-        <p class="text-sm sm:text-base text-gray-700">L28, Block 11, km 17 Commonwealth Ave, Quezon City, 1127 Metro Manila</p>
+        <p class="text-sm sm:text-base text-gray-700">Lot 28 Blk 11 170 Commonwealth Avenue Quezon City 1127</p>
         <p class="text-xs text-gray-500 mt-2">Open daily 8AM-6PM</p>
     </div>
 </div>
