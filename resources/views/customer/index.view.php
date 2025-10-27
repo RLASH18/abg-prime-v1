@@ -154,6 +154,16 @@
                                 </div>
 
                                 <div class="p-3 sm:p-4 space-y-2">
+                                    <!-- Item Code Badge -->
+                                    <div class="flex items-center gap-1.5">
+                                        <span class="inline-flex items-center text-[10px] sm:text-xs font-mono font-semibold bg-gray-100 text-gray-700 border border-gray-300 px-2 py-0.5 rounded-full">
+                                            <svg class="w-3 h-3 sm:w-3.5 sm:h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"></path>
+                                            </svg>
+                                            <?= $item->item_code ?>
+                                        </span>
+                                    </div>
+
                                     <!-- Name -->
                                     <h3 class="text-sm sm:text-base font-semibold text-gray-900 truncate item-name line-clamp-2">
                                         <?= $item->item_name ?>

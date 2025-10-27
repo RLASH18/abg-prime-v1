@@ -65,26 +65,26 @@
 
         <!-- Product Details -->
         <div class="space-y-4 sm:space-y-6">
-            <!-- Category Badge -->
-            <div class="flex items-center space-x-2">
+            <!-- Category Badge & Item Code -->
+            <div class="flex flex-wrap items-center gap-2 sm:gap-3">
                 <span class="inline-flex items-center px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-[#815331] text-white">
                     <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
                     </svg>
                     <?= $items->category ?>
                 </span>
+                
+                <!-- Item Code Badge -->
+                <span class="inline-flex items-center px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-mono font-semibold bg-gray-100 text-gray-700 border border-gray-300">
+                    <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"></path>
+                    </svg>
+                    <?= $items->item_code ?>
+                </span>
             </div>
 
             <!-- Product Title -->
             <h1 class="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900"><?= ucfirst($items->item_name) ?></h1>
-
-            <!-- Item Code -->
-            <div class="flex items-center text-sm text-gray-600">
-                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"></path>
-                </svg>
-                Item Code: <span class="ml-1 font-medium text-gray-900"><?= $items->item_code ?></span>
-            </div>
 
             <!-- Brand Info -->
             <div class="flex items-center text-sm text-gray-600">
