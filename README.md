@@ -59,7 +59,7 @@ Project_root/
 ### 1. **Clone the Repository**
 
 ```bash
-git clone https://github.com/yourusername/HSS_Main.git
+git clone https://github.com/yourusername/hss-main.git
 cd HSS_Main
 ```
 
