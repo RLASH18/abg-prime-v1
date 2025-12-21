@@ -2,7 +2,7 @@
 
 use app\core\Application;
 
-class m_0010_create_suppliers_table
+class m_0002_a_create_suppliers_table
 {
     public function up()
     {

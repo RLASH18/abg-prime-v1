@@ -2,7 +2,7 @@
 
 use app\core\Application;
 
-class m_0002_create_inventory_table
+class m_0002_b_create_inventory_table
 {
     public function up()
     {
