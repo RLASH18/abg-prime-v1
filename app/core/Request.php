@@ -127,6 +127,7 @@ class Request
 
             // If field is nullable AND empty, skip all validation for it
             if (in_array('nullable', $rulesArray) && empty($value)) {
+                $data[$field] = null;
                 continue;
             }
 
