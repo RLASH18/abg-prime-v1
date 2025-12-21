@@ -20,6 +20,18 @@
 
 ---
 
+## 📋 Requirements
+
+Before you begin, ensure your development environment meets the following requirements:
+
+- **PHP**: 8.1.x (PHP 8.2+ may cause deprecation warnings)
+- **Composer**: Latest version
+- **Database**: MySQL 5.7+ or MariaDB 10.3+
+- **Node.js**: 14.x or higher (for Tailwind CSS compilation)
+- **Web Server**: Apache 2.4+ or Nginx (or use PHP's built-in server for development)
+
+---
+
 ## 🗂️ Project Structure
 
 ```plaintext
