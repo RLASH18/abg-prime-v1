@@ -45,6 +45,7 @@ class InventoryController extends Controller
     {
         // Validate form inputs
         $inventory = $request->validate([
+            'supplier_id' => 'nullable',
             'brand_name' => 'required',
             'item_name' => 'required',
             'description' => 'nullable',
@@ -59,6 +60,10 @@ class InventoryController extends Controller
 
         // Generate item code based on category
         $inventory['item_code'] = Inventory::generateItemCode($inventory['category']);
+
+        if (empty($inventory['supplier_id'])) {
+            $inventory['supplier_id'] = null;
+        }
 
         // Handle image upload
         $image1 = FileHandler::fromRequest('item_image_1');
@@ -125,6 +130,7 @@ class InventoryController extends Controller
     {
         // Validate update inputs
         $inventory = $request->validate([
+            'supplier_id' => 'nullable',
             'brand_name' => 'required',
             'item_name' => 'required',
             'description' => 'nullable',
@@ -137,8 +143,13 @@ class InventoryController extends Controller
             'restock_threshold' => 'required'
         ]);
 
+
         // Get existing inventory record
         $existing = $this->findInventoryOrFail($id);
+
+        if (empty($inventory['supplier_id'])) {
+            $inventory['supplier_id'] = null;
+        }
 
         // Regenerate item code if category changed
         if ($inventory['category'] !== $existing->category) {
