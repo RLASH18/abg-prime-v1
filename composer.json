@@ -1,5 +1,5 @@
 {
-    "name": "hss_dev/hss_main",
+    "name": "studentdev/abg-prime-v1",
     "autoload": {
         "psr-4": {
             "app\\": "app/",
