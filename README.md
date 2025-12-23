@@ -5,6 +5,14 @@
 
 ---
 
+## 🏢 About This System
+
+This framework powers the **Inventory and Order Management System** for **ABG Prime Builders Supplies Inc.**, developed as a thesis project demonstrating distributed system architecture.
+
+📖 For detailed information about the system, modules, and third-party integrations, see [SYSTEM_OVERVIEW.md](SYSTEM_OVERVIEW.md).
+
+---
+
 ## ✨ Features
 
 - **MVC Architecture**: Clean separation of concerns with Controllers, Models, and Views.
@@ -17,6 +25,8 @@
 - **Helpers**: Utility functions for views, forms, and authentication.
 - **Modern UI**: Tailwind CSS and Flowbite integration for rapid UI development.
 - **Error Handling**: Custom static HTML error views for common HTTP errors (403, 404, 405, 419, 500).
+- **File-Based Caching**: Production-ready caching system with TTL support for improved performance.
+- **Session Caching**: Custom session handler with file-based storage in `runtime/sessions`.
 
 ---
 
@@ -224,6 +234,59 @@ If using Apache, the included `.htaccess` in `public/` enables pretty URLs:
 ### CSRF Protection
 - All POST forms should include `<?= csrf_token() ?>`.
 - CSRF middleware automatically validates tokens on POST requests.
+
+### Caching System
+The framework includes a robust file-based caching system located in `app/core/Cache.php`:
+
+#### Cache Storage
+- **Cache Directory**: `runtime/cache/`
+- **Session Directory**: `runtime/sessions/`
+- Cache files are stored with MD5-hashed keys and `.cache` extension
+- Sessions are stored with `sess_` prefix
+
+#### Cache Features
+- **TTL Support**: Set time-to-live for cache entries (default: 3600 seconds)
+- **Automatic Expiration**: Expired cache entries are automatically cleaned up
+- **Cache Methods**:
+  - `Cache::set($key, $data, $ttl)` - Store data with optional TTL
+  - `Cache::get($key, $default)` - Retrieve cached data
+  - `Cache::has($key)` - Check if cache exists and is valid
+  - `Cache::delete($key)` - Remove specific cache entry
+  - `Cache::clear()` - Clear all cache entries
+  - `Cache::remember($key, $ttl, $callback)` - Get from cache or execute callback
+  - `Cache::cleanup()` - Remove all expired cache entries
+
+#### Cache Usage Examples
+```php
+// Store data in cache for 1 hour
+Cache::set('user_data', $userData, 3600);
+
+// Retrieve cached data
+$userData = Cache::get('user_data');
+
+// Remember pattern - get from cache or execute callback
+$products = Cache::remember('products_list', 3600, function() {
+    return Product::all();
+});
+
+// Clear all cache
+Cache::clear();
+```
+
+#### Session Caching
+- Custom session handler stores sessions in `runtime/sessions/`
+- Session files use PHP's native session format
+- Automatic session cleanup on expiration
+- Configurable session lifetime
+
+#### Configuration
+Cache settings can be configured in your config files:
+```php
+'cache' => [
+    'enabled' => true,
+    'cache_dir' => '/runtime/cache',
+],
+```
 
 ---
 
